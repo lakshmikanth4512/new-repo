@@ -1,11 +1,11 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, Node.js!');
+app.get('/', (req, res) => {
+  res.send('Hello, Node.js with Express!');
 });
 
-server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000/');
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
 });
