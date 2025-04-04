@@ -1,0 +1,36 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master  # Trigger CI/CD on push to the master branch
+  pull_request:
+    branches:
+      - master  # Trigger CI/CD on pull requests targeting the master branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Run the job on an Ubuntu environment
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the version of Node.js to use
+
+    - name: Install dependencies
+      run: npm install  # Install the dependencies from package.json
+
+    - name: Run tests
+      run: npm test  # Replace with your test command (if you have tests)
+
+    - name: Build the app
+      run: npm run build  # Optional: Replace with your build command if you have one
+
+    - name: Deploy the app (optional)
+      run: |
+        echo "Deploying the app..."
+        # Add your deployment commands here (e.g., for Heroku, AWS, or others)
